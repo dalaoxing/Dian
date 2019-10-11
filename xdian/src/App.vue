@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view class="rou-one"/>
+    <keep-alive>
+      <router-view class="rou-one"/>
+    </keep-alive>
   </div>
 </template>
 
