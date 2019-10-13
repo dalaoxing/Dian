@@ -63,6 +63,15 @@ export default [{
     component: () =>
         import ('@/views/register/register.vue')
 }, {
+    path: '/details',
+    name: 'details',
+    meta: {
+        request: false,
+        title: '详情'
+    },
+    component: () =>
+        import ('@/views/details/details.vue')
+}, {
     path: '/',
     redirect: '/index/home'
 }]

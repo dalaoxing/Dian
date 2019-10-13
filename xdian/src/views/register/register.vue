@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-    <div>
+    <div class="register">
       <h4>注册</h4>
       <p><input type="text" v-model="phone" placeholder="请输入手机号"></p>
       <p><input type="text" v-model="pwd"  placeholder="请输入密码"></p>
@@ -36,5 +36,33 @@ export default {
 }
 </script>
 <style lang='scss' scoped>
-
+    .register{
+    box-sizing: border-box;
+    padding: 0 40px;
+    h4{
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 100px;
+    }
+    p{
+      border-bottom: 1px solid #ccc;
+      input{
+        border: 0;
+        outline: none;
+        line-height: 48px;
+        font-size: 18px;
+      }
+    }
+    button{
+      width: 100%;
+      line-height: 40px;
+      border: 0;
+      outline: none;
+      margin-top: 30px;
+      background: tomato;
+      color: #fff;
+      font-size: 18px;
+      border-radius: 20px;
+    }
+  }
 </style>

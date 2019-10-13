@@ -50,6 +50,7 @@ export default {
     },
     _scroll(){
       this.iscroll=new BScroll('.home',{
+        click:true,
         pullDownRefresh: {
           //下拉刷新
           threshold: 50

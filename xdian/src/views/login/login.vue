@@ -1,7 +1,7 @@
 <!--  -->
 <template>
-    <div>
-      <h4>登陆</h4>
+    <div class="login">
+      <h4>手机号登录</h4>
       <p><input type="text" v-model="phone" placeholder="请输入手机号"></p>
       <p><input type="text" v-model="pwd"  placeholder="请输入密码"></p>
       <button @click="toLogin">登陆</button>
@@ -30,6 +30,8 @@ export default {
         }
       }catch(err){
         // console.log(err.response);
+        console.log(123);
+        
         this.$toast(err.response.data.msg)
       }
     },
@@ -40,5 +42,34 @@ export default {
 }
 </script>
 <style lang='scss' scoped>
-
+  .login{
+    box-sizing: border-box;
+    padding: 0 40px;
+    h4{
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 100px;
+    }
+    p{
+      border-bottom: 1px solid #ccc;
+      input{
+        border: 0;
+        outline: none;
+        line-height: 48px;
+        font-size: 18px;
+      }
+    }
+    button{
+      width: 100%;
+      line-height: 40px;
+      border: 0;
+      outline: none;
+      margin-top: 30px;
+      background: tomato;
+      color: #fff;
+      font-size: 18px;
+      border-radius: 20px;
+    }
+  }
+  
 </style>

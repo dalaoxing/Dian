@@ -12,7 +12,7 @@ export default {
   data () {
     return {
         msg:'',
-        show: true
+        show: false
     };
   }
 }
@@ -29,6 +29,8 @@ export default {
         margin: auto;
         height: 40px;
         text-align: center;
+        line-height: 40px;
+        background: #fff;
     }
     .fade-enter-active, .fade-leave-active {
         transition: opacity .5s;
