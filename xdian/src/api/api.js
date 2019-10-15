@@ -26,3 +26,9 @@ export const addCar = (obj) => Axios.post('/api/car/addCar', obj);
 
 //获取购物车
 export const getCar = (params) => Axios.get('/api/car/getCar', { params });
+
+//删除购物车数量
+export const removeCar = (obj) => Axios.post('/api/car/removeCar', obj);
+
+//删除购物车商品
+export const removeShop = (obj) => Axios.post('/api/car/removeShop', obj);

@@ -22,9 +22,11 @@ export default {
   methods:{
     async toLogin(){
       try{
+        //把输入的电话号码和密码经过请求端口传给后台
         let res=await Login({phone:this.phone,password:this.pwd});
         // console.log(res);
         if(res.data.code===1){
+          //如果成功了
           window.localStorage.token=res.data.data.token;
           this.$router.push(this.$route.query.redirect)
         }

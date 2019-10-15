@@ -39,12 +39,15 @@ export default {
   },
   methods:{
     async upData(pageid,limit){
-      let res = await homeList({pageid:this.pageid,limit:this.limit})
+      //获取首页数据如果没有传页码跟每页的条数那么
+      let res = await homeList({pageid:this.pageid,limit:this.limit});
+      //把之前的数据跟新请求到的数据合并
       this.shopList=[...this.shopList,...res.data.data];
-      if(res.data.data.length<10){
+      //如果请求到了数据比默认的数据条数多那么就不需要再请求数据了
+      if(res.data.data.length<this.limit){
         this.show=true;
       }
-      this.iscroll.refresh();
+      this.iscroll.refresh();//从新计算整个DOM结构
       this.iscroll.finishPullUp(); //上拉加载完成之后要调用一下此方法
       this.iscroll.finishPullDown(); //下拉刷新完成之后要调用一下此方法
     },
@@ -61,12 +64,15 @@ export default {
         }
       });
       this.iscroll.on('pullingUp',()=>{
+        //上拉成功之后执行
         if(!this.show){
+          //页码自增之后从新请求信数据
           this.pageid++;
           this.upData();
         }
       })
       this.iscroll.on('pullingDown',()=>{
+        //下拉成功后把需要的数据全部都恢复为默认
         this.shopList=[];
         this.pageid=0;
         this.show=false;

@@ -3,8 +3,8 @@
     <div class="index">
         <router-view class="rou-two"/>
         <div class="foot">
-            <dl v-for="(it,inx) in foot" :key="inx" :class="{ave:inx===index}" @click="toJump(inx)">
-                <dt><img :src="inx===index?require('@/img/'+it.ave):require('@/img/'+it.img)"></dt>
+            <dl v-for="(it,inx) in foot" :key="inx" :class="{ave:it.path===path}" @click="toJump(inx)">
+                <dt><img :src="it.path===path?require('@/img/'+it.ave):require('@/img/'+it.img)"></dt>
                 <dd>{{it.title}}</dd>
             </dl>
         </div>
@@ -15,7 +15,7 @@
 export default {
   data () {
     return {
-        index:0,
+        path:'',
         foot:[
             {
                 title:'首页',
@@ -45,7 +45,13 @@ export default {
       toJump(inx){
           this.index=inx;
           this.$router.push(this.foot[inx].path).catch(()=>{});
+          setTimeout(()=>{
+              this.path=this.$router.history.current.path;
+          },50)
       }
+  },
+  created(){
+      this.path=this.$router.history.current.path;
   }
 }
 

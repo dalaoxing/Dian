@@ -27,32 +27,43 @@ export default {
   name:'classfiy',
   data () {
     return {
-      leftList:[],
-      rightList:[],
-      one:0,
-      two:0
+      leftList:[],//左边列表数据
+      rightList:[],//右边列表数据
+      one:0,//一级列表下标
+      two:0//二级列表下标
     };
   },
   async created(){
+    //获取左边列表的数据
     let res=await Classfiy();
+    //赋值给相应的数据
     this.leftList=res.data.data;
+    //调用方法渲染出右边列表数据
     this._select();
   },
   methods:{
+    //左边列表的点击事件
     toLeft(inx){
+      //让一级下标等于点击的下标二级下标归零
       this.one=inx;
       this.two=0;
+      //如果点击的一级列表的二级列表长度不等于零就渲染右边列表的数据
       if(this.leftList[this.one].children.length>0){
         this._select();
       }
     },
     toRight(inx){
+      //右边列表的点击事件
       this.two=inx;
+      //二级列表渲染
       this._select();
     },
     async _select(){
+      //先把需要的变量结构出来
       let {leftList,one,two} = this;
+      //调用筛选的请求端口把一级列表的ID和二级列表的ID都传过去返回的就是需要渲染到右边的数据
       let ret=await ClassSelect({type_id:leftList[one].id,category_id:leftList[one].children[two].id});
+      //把数据赋值给相应的变量去渲染
       this.rightList=ret.data.data;
     }
   }
